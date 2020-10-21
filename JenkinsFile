@@ -1,0 +1,15 @@
+pipeline {
+    agent any   
+    stages {
+        stage('Checkout') {
+           steps {
+        git url: 'https://github.com/genmart/RealEstatePropertyManageEntity.git', credentialsId: 'github', branch: 'master'
+     }
+        }
+        stage('Build') {
+            steps {               
+                bat 'mvn clean install -DskipTests=true'               
+                }
+            }      
+        }
+    }
